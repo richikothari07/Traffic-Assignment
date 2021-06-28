@@ -3,15 +3,7 @@ import pandas as pd
 from scipy.sparse import csr_matrix
 
 def find_routes(edge_id, routes_file):
-    """
-        edge_id = J081_L03
-        routes_file = xml file
-        Output:
-            ["J082_L01 -J082_L04 J081_L03 -J081_L02",
-             "J082_L01 ... -J081_L03 -J081_L02",
-             "J082_L10 -J082_L04 J081_L03 -J081_L11"]
-    """
-
+ 
     root = ET.parse(routes_file).getroot()
     routes = []
     for type_tag in root.findall('vehicle/route'):
@@ -23,14 +15,7 @@ def find_routes(edge_id, routes_file):
 
 
 def find_zones(routes_file, taz_file, edge_id):
-    """
-        {
-            taz_0:{taz_1:1, taz_2:0,,,,},
-        {taz_1:{}}
-        }
 
-        matrix
-    """
     alist = find_routes(edge_id, routes_file)
     root = ET.parse(taz_file).getroot()
     source = {}
@@ -78,13 +63,7 @@ def find_zones(routes_file, taz_file, edge_id):
     return S
 
 def find_all_matrices(edges_list, routes_file, taz_file):
-    """
-
-    :param edges_list: list of edges
-    :param routes_file: routes file
-    :param taz_file: taz file
-    :return: list of matrices
-    """
+  
     matrix_list = []
     for i in edges_list:
         matrix = find_zones(routes_file, taz_file, i)
