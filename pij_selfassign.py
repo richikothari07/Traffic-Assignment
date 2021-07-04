@@ -143,8 +143,7 @@ zone2
 zone3
 ...n
     """
-    # new_df = ksp_route_matrix.copy(deep=True) (it doesn't work - on changing this the original dataframe also changes)
-    # Please suggest something for this
+
 
     # creates a dictionary of edge as key and their respective weights as value
     weights = {}
@@ -227,6 +226,5 @@ if __name__ == '__main__':
     edge_id = 'B8C8'
     print(find_pij(mod_ksp, edge_id))
 
-# Store using sqlite
-# Still figuring out..
+
 
