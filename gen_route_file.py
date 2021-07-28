@@ -293,12 +293,12 @@ def generate_route_file(mod_ksp_routes_matrix):
             vehicles = ['Car', 'Bike', 'Truck']
             proportions = [0.3, 0.6, 0.1]
             prp = [x*100 for x in proportions]
-            pr = [item for item, count in zip(vehicles, prp) for i in range(int(count))]
+            sample = [item for item, count in zip(vehicles, prp) for i in range(int(count))]
             # assigning depart time(total time = 10 min, distributed among 100 vehicles) and route to each vehicle
             for k in range(round(j[-1])):
                 v = ET.Element("vehicle")
                 root.append(v)
-                v.set('type', random.choice(pr))
+                v.set('type', random.choice(sample))
                 v.set('depart', "{:.2f}".format(p))
                 p = p + 0.1
                 v.tail = "\n"
